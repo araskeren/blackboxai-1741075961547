@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoom Bot Recorder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Zoom Bot Recorder</h1>
+            <p class="text-gray-600">Automatically join Zoom meetings and record audio</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Left Column: Meeting Controls -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Meeting Controls</h2>
+                
+                <!-- Meeting Form -->
+                <form id="meetingForm" class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="meetingUrl">Meeting URL (Optional)</label>
+                        <input type="text" id="meetingUrl" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="https://zoom.us/j/...">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="meetingId">Meeting ID</label>
+                        <input type="text" id="meetingId" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="123 456 7890" required>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="password">Password (Optional)</label>
+                        <input type="password" id="password" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Meeting password">
+                    </div>
+
+                    <div class="flex space-x-4">
+                        <button type="submit" class="flex-1 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors">
+                            <i class="fas fa-video mr-2"></i>Join Meeting
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Recording Controls -->
+                <div class="mt-8 space-y-4">
+                    <h3 class="text-lg font-semibold mb-4">Recording Controls</h3>
+                    <div class="flex space-x-4">
+                        <button id="startRecording" class="flex-1 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition-colors">
+                            <i class="fas fa-microphone mr-2"></i>Start Recording
+                        </button>
+                        <button id="stopRecording" class="flex-1 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition-colors" disabled>
+                            <i class="fas fa-stop mr-2"></i>Stop Recording
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Status and Recordings -->
+            <div class="space-y-8">
+                <!-- Status Panel -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4">Status</h2>
+                    <div id="status" class="p-4 rounded bg-gray-100">
+                        <p class="text-gray-600">Waiting for action...</p>
+                    </div>
+                </div>
+
+                <!-- Recordings List -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4">Recordings</h2>
+                    <div id="recordingsList" class="space-y-2">
+                        <!-- Recordings will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
